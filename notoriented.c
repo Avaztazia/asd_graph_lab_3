@@ -216,20 +216,13 @@ void drawGraph ( HDC hdc, double** matrix )
 
                                 }
                                 else {
+                                    LineTo( hdc, nx[j], ny[j] );
                                     //S..t starts here:
-                                    if ( matrix[j][i] == 1 ) {
-                                        if ( i - j < 0 ) {
-                                            LineTo( hdc, nx[j], ny[j] );
-                                        }
-                                    }
-                                    else{
-                                        LineTo( hdc, nx[j], ny[j] );
-                                    }
                                 }
                             }
                         }
                         else {
-                                LineTo( hdc, nx[j], ny[j] );
+                            LineTo( hdc, nx[j], ny[j] );
                         }
                     }
                 }
@@ -290,10 +283,10 @@ void generateMatrixes (  )
     printMatrix ( mirror, numb, numb );
 }
 
-//Ñîçäà¸ì ïðîòîòèï ôóíêöèè îêíà, êîòîðàÿ áóäåò îïðåäåëåíà íèæå
+//Ã‘Ã®Ã§Ã¤Ã Â¸Ã¬ Ã¯Ã°Ã®Ã²Ã®Ã²Ã¨Ã¯ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨ Ã®ÃªÃ­Ã , ÃªÃ®Ã²Ã®Ã°Ã Ã¿ Ã¡Ã³Ã¤Ã¥Ã² Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Ã¥Ã­Ã  Ã­Ã¨Ã¦Ã¥
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-//îáúÿâëÿåì ñòðîêó-èìÿ ïðîãðàììû
+//Ã®Ã¡ÃºÃ¿Ã¢Ã«Ã¿Ã¥Ã¬ Ã±Ã²Ã°Ã®ÃªÃ³-Ã¨Ã¬Ã¿ Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã¬Ã»
 char ProgName[]="Lab 3";
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
@@ -301,16 +294,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
     HWND hWnd;
     MSG lpMsg;
 
-    WNDCLASS w; //ñîçäà¸ì ýêçåìïëÿð ñòðóêòóðû WNDCLASS
+    WNDCLASS w; //Ã±Ã®Ã§Ã¤Ã Â¸Ã¬ Ã½ÃªÃ§Ã¥Ã¬Ã¯Ã«Ã¿Ã° Ã±Ã²Ã°Ã³ÃªÃ²Ã³Ã°Ã» WNDCLASS
 
-    w.lpszClassName=ProgName; //èìÿ ïðîãðàììû - îáúÿâëåíî âûøå
-    w.hInstance=hInstance; //èäåíòèôèêàòîð òåêóùåãî ïðèëîæåíèÿ
-    w.lpfnWndProc=WndProc; //óêàçàòåëü íà ôóíêöèþ îêíà
-    w.hCursor=LoadCursor(NULL, IDC_ARROW); //çàãðóæàåì êóðñîð
-    w.hIcon=0; //èêîíêè ó íàñ íå áóäåò ïîêà
-    w.lpszMenuName=0; //è ìåíþ ïîêà íå áóäåò
-    w.hbrBackground = LTGRAY_BRUSH; //WHITE_BRUSH;// öâåò ôîíà îêíà
-    w.style=CS_HREDRAW|CS_VREDRAW; //ñòèëü - ïåðåðèñîâûâàåìîå ïî õ è ïî ó
+    w.lpszClassName=ProgName; //Ã¨Ã¬Ã¿ Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã¬Ã» - Ã®Ã¡ÃºÃ¿Ã¢Ã«Ã¥Ã­Ã® Ã¢Ã»Ã¸Ã¥
+    w.hInstance=hInstance; //Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã²Ã¥ÃªÃ³Ã¹Ã¥Ã£Ã® Ã¯Ã°Ã¨Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¿
+    w.lpfnWndProc=WndProc; //Ã³ÃªÃ Ã§Ã Ã²Ã¥Ã«Ã¼ Ã­Ã  Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¾ Ã®ÃªÃ­Ã 
+    w.hCursor=LoadCursor(NULL, IDC_ARROW); //Ã§Ã Ã£Ã°Ã³Ã¦Ã Ã¥Ã¬ ÃªÃ³Ã°Ã±Ã®Ã°
+    w.hIcon=0; //Ã¨ÃªÃ®Ã­ÃªÃ¨ Ã³ Ã­Ã Ã± Ã­Ã¥ Ã¡Ã³Ã¤Ã¥Ã² Ã¯Ã®ÃªÃ 
+    w.lpszMenuName=0; //Ã¨ Ã¬Ã¥Ã­Ã¾ Ã¯Ã®ÃªÃ  Ã­Ã¥ Ã¡Ã³Ã¤Ã¥Ã²
+    w.hbrBackground = LTGRAY_BRUSH; //WHITE_BRUSH;// Ã¶Ã¢Ã¥Ã² Ã´Ã®Ã­Ã  Ã®ÃªÃ­Ã 
+    w.style=CS_HREDRAW|CS_VREDRAW; //Ã±Ã²Ã¨Ã«Ã¼ - Ã¯Ã¥Ã°Ã¥Ã°Ã¨Ã±Ã®Ã¢Ã»Ã¢Ã Ã¥Ã¬Ã®Ã¥ Ã¯Ã® Ãµ Ã¨ Ã¯Ã® Ã³
     w.cbClsExtra=0;
     w.cbWndExtra=0;
 
@@ -320,45 +313,45 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
    // HWND hWnd;
     //MSG lpMsg;
 
-//Ñîçäàäèì îêíî â ïàìÿòè, çàïîëíèâ àðãóìåíòû CreateWindow
-    hWnd=CreateWindow(ProgName, //Èìÿ ïðîãðàììû
-        "Lab 3", //Çàãîëîâîê îêíà
-        WS_OVERLAPPEDWINDOW, //Ñòèëü îêíà - ïåðåêðûâàþùååñÿ
-        0, //ïîëîæåíèå îêíà íà ýêðàíå ïî õ
-        0, //ïîëîæåíèå ïî ó
-        1920, //øèðèíà
-        1080, //âèñîòà
-        (HWND)NULL, //èäåíòèôèêàòîð ðîäèòåëüñêîãî îêíà
-        (HMENU)NULL, //èäåíòèôèêàòîð ìåíþ
-        (HINSTANCE)hInstance, //èäåíòèôèêàòîð ýêçåìïëÿðà ïðîãðàììû
-        (HINSTANCE)NULL); //îòñóòñòâèå äîïîëíèòåëüíûõ ïàðàìåòðîâ
+//Ã‘Ã®Ã§Ã¤Ã Ã¤Ã¨Ã¬ Ã®ÃªÃ­Ã® Ã¢ Ã¯Ã Ã¬Ã¿Ã²Ã¨, Ã§Ã Ã¯Ã®Ã«Ã­Ã¨Ã¢ Ã Ã°Ã£Ã³Ã¬Ã¥Ã­Ã²Ã» CreateWindow
+    hWnd=CreateWindow(ProgName, //ÃˆÃ¬Ã¿ Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã¬Ã»
+        "Lab 3", //Ã‡Ã Ã£Ã®Ã«Ã®Ã¢Ã®Ãª Ã®ÃªÃ­Ã 
+        WS_OVERLAPPEDWINDOW, //Ã‘Ã²Ã¨Ã«Ã¼ Ã®ÃªÃ­Ã  - Ã¯Ã¥Ã°Ã¥ÃªÃ°Ã»Ã¢Ã Ã¾Ã¹Ã¥Ã¥Ã±Ã¿
+        0, //Ã¯Ã®Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã®ÃªÃ­Ã  Ã­Ã  Ã½ÃªÃ°Ã Ã­Ã¥ Ã¯Ã® Ãµ
+        0, //Ã¯Ã®Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¯Ã® Ã³
+        1920, //Ã¸Ã¨Ã°Ã¨Ã­Ã 
+        1080, //Ã¢Ã¨Ã±Ã®Ã²Ã 
+        (HWND)NULL, //Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã°Ã®Ã¤Ã¨Ã²Ã¥Ã«Ã¼Ã±ÃªÃ®Ã£Ã® Ã®ÃªÃ­Ã 
+        (HMENU)NULL, //Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã¬Ã¥Ã­Ã¾
+        (HINSTANCE)hInstance, //Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã½ÃªÃ§Ã¥Ã¬Ã¯Ã«Ã¿Ã°Ã  Ã¯Ã°Ã®Ã£Ã°Ã Ã¬Ã¬Ã»
+        (HINSTANCE)NULL); //Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã¨Ã¥ Ã¤Ã®Ã¯Ã®Ã«Ã­Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã»Ãµ Ã¯Ã Ã°Ã Ã¬Ã¥Ã²Ã°Ã®Ã¢
 
-//Âûâîäèì îêíî èç ïàìÿòè íà ýêðàí
+//Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã¬ Ã®ÃªÃ­Ã® Ã¨Ã§ Ã¯Ã Ã¬Ã¿Ã²Ã¨ Ã­Ã  Ã½ÃªÃ°Ã Ã­
     ShowWindow(hWnd, nCmdShow);
-//Îáíîâèì ñîäåðæèìîå îêíà
+//ÃŽÃ¡Ã­Ã®Ã¢Ã¨Ã¬ Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã¬Ã®Ã¥ Ã®ÃªÃ­Ã 
  //   UpdateWindow(hWnd);
 
-//Öèêë îäåðæàííÿ ïîâ³äîìëåíü
+//Ã–Ã¨ÃªÃ« Ã®Ã¤Ã¥Ã°Ã¦Ã Ã­Ã­Ã¿ Ã¯Ã®Ã¢Â³Ã¤Ã®Ã¬Ã«Ã¥Ã­Ã¼
 
-    while(GetMessage(&lpMsg, hWnd, 0, 0)) { //Ïîëó÷àåì ñîîáùåíèå èç î÷åðåäè
-            TranslateMessage(&lpMsg); //Ïðåîáðàçóåò ñîîáùåíèÿ êëàâèø â ñèìâîëû
-            DispatchMessage(&lpMsg); //Ïåðåäà¸ò ñîîáùåíèå ñîîòâåòñòâóþùåé ôóíêöèè îêíà
+    while(GetMessage(&lpMsg, hWnd, 0, 0)) { //ÃÃ®Ã«Ã³Ã·Ã Ã¥Ã¬ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã¨Ã§ Ã®Ã·Ã¥Ã°Ã¥Ã¤Ã¨
+            TranslateMessage(&lpMsg); //ÃÃ°Ã¥Ã®Ã¡Ã°Ã Ã§Ã³Ã¥Ã² Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¿ ÃªÃ«Ã Ã¢Ã¨Ã¸ Ã¢ Ã±Ã¨Ã¬Ã¢Ã®Ã«Ã»
+            DispatchMessage(&lpMsg); //ÃÃ¥Ã°Ã¥Ã¤Ã Â¸Ã² Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã±Ã®Ã®Ã²Ã¢Ã¥Ã²Ã±Ã²Ã¢Ã³Ã¾Ã¹Ã¥Ã© Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨ Ã®ÃªÃ­Ã 
         }
     return(lpMsg.wParam);
     }
 
-//Ôóíêöèÿ îêíà
+//Ã”Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã®ÃªÃ­Ã 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT messg,
                         WPARAM wParam, LPARAM lParam)
     {
-    HDC hdc; //ñîçäà¸ì êîíòåêñò óñòðîéñòâà
-    PAINTSTRUCT ps; //ñîçäà¸ì ýêçåìïëÿð ñòðóêòóðû ãðàôè÷åñêîãî âûâîäà
+    HDC hdc; //Ã±Ã®Ã§Ã¤Ã Â¸Ã¬ ÃªÃ®Ã­Ã²Ã¥ÃªÃ±Ã² Ã³Ã±Ã²Ã°Ã®Ã©Ã±Ã²Ã¢Ã 
+    PAINTSTRUCT ps; //Ã±Ã®Ã§Ã¤Ã Â¸Ã¬ Ã½ÃªÃ§Ã¥Ã¬Ã¯Ã«Ã¿Ã° Ã±Ã²Ã°Ã³ÃªÃ²Ã³Ã°Ã» Ã£Ã°Ã Ã´Ã¨Ã·Ã¥Ã±ÃªÃ®Ã£Ã® Ã¢Ã»Ã¢Ã®Ã¤Ã 
 
 
 
-//Öèêë îáðàáîòêè ñîîáùåíèé
+//Ã–Ã¨ÃªÃ« Ã®Ã¡Ã°Ã Ã¡Ã®Ã²ÃªÃ¨ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã©
     switch(messg){
-    //ñîîáùåíèå ðèñîâàíèÿ
+    //Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã°Ã¨Ã±Ã®Ã¢Ã Ã­Ã¨Ã¿
         case WM_PAINT :
 
             hdc=BeginPaint(hWnd, &ps);
