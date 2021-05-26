@@ -244,13 +244,13 @@ void drawGraph ( HDC hdc, double** matrix )
 
                                 }
                                 else {
+                                    LineTo( hdc, nx[j], ny[j] );
                                     //S..t starts here:
                                     if ( matrix[j][i] == 1 ) {
 
                                         if ( i - j < 0 ) {
                                             pt[1].x = nx[i] + 20;
                                             pt[1].y = ny[i] - oneLen;
-                                            LineTo( hdc, nx[j], ny[j] );
                                             arrow(70,nx[j]-8,ny[j]+dy);
                                             Polyline(hdc,pt,3);
                                             arrow(-100,nx[i]+1,ny[i]-dy);
@@ -308,13 +308,12 @@ void drawGraph ( HDC hdc, double** matrix )
                                             }
 
                                         }
-                                        LineTo( hdc, nx[j], ny[j] );
                                     }
                                 }
                             }
                         }
                         else {
-
+                            LineTo( hdc, nx[j], ny[j] );
                             if ( matrix[j][i] == 1 ) {
                                 if ( i - j > 0 ) {
                                     POINT pt[3];
@@ -324,7 +323,7 @@ void drawGraph ( HDC hdc, double** matrix )
                                     pt[2].x = nx[j];
                                     pt[2].y = ny[j];
 
-                                    LineTo( hdc, nx[j], ny[j] );
+
                                     if ( nx[i] == nx[j] && ny[i] > ny[j] ) {
                                         arrow(90, nx[j], ny[j]+dy);
                                         pt[1].x = nx[i]-oneLen/4;
@@ -353,7 +352,7 @@ void drawGraph ( HDC hdc, double** matrix )
                                 }
                             }
                             else {
-                                LineTo( hdc, nx[j], ny[j] );
+
                                 if ( nx[i] == nx[j] && ny[i] > ny[j] ) {
                                     arrow(90, nx[j], ny[j]+dy);
                                 }
@@ -428,10 +427,10 @@ void generateMatrixes (  )
     printMatrix ( mirror, numb, numb );
 }
 
-//Создаём прототип функции окна, которая будет определена ниже
+//Г‘Г®Г§Г¤Г ВёГ¬ ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г®ГЄГ­Г , ГЄГ®ГІГ®Г°Г Гї ГЎГіГ¤ГҐГІ Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г  Г­ГЁГ¦ГҐ
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-//объявляем строку-имя программы
+//Г®ГЎГєГїГўГ«ГїГҐГ¬ Г±ГІГ°Г®ГЄГі-ГЁГ¬Гї ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
 char ProgName[]="Lab 3";
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
@@ -439,16 +438,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
     HWND hWnd;
     MSG lpMsg;
 
-    WNDCLASS w; //создаём экземпляр структуры WNDCLASS
+    WNDCLASS w; //Г±Г®Г§Г¤Г ВёГ¬ ГЅГЄГ§ГҐГ¬ГЇГ«ГїГ° Г±ГІГ°ГіГЄГІГіГ°Г» WNDCLASS
 
-    w.lpszClassName=ProgName; //имя программы - объявлено выше
-    w.hInstance=hInstance; //идентификатор текущего приложения
-    w.lpfnWndProc=WndProc; //указатель на функцию окна
-    w.hCursor=LoadCursor(NULL, IDC_ARROW); //загружаем курсор
-    w.hIcon=0; //иконки у нас не будет пока
-    w.lpszMenuName=0; //и меню пока не будет
-    w.hbrBackground = LTGRAY_BRUSH; //WHITE_BRUSH;// цвет фона окна
-    w.style=CS_HREDRAW|CS_VREDRAW; //стиль - перерисовываемое по х и по у
+    w.lpszClassName=ProgName; //ГЁГ¬Гї ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» - Г®ГЎГєГїГўГ«ГҐГ­Г® ГўГ»ГёГҐ
+    w.hInstance=hInstance; //ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° ГІГҐГЄГіГ№ГҐГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
+    w.lpfnWndProc=WndProc; //ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГґГіГ­ГЄГ¶ГЁГѕ Г®ГЄГ­Г 
+    w.hCursor=LoadCursor(NULL, IDC_ARROW); //Г§Г ГЈГ°ГіГ¦Г ГҐГ¬ ГЄГіГ°Г±Г®Г°
+    w.hIcon=0; //ГЁГЄГ®Г­ГЄГЁ Гі Г­Г Г± Г­ГҐ ГЎГіГ¤ГҐГІ ГЇГ®ГЄГ 
+    w.lpszMenuName=0; //ГЁ Г¬ГҐГ­Гѕ ГЇГ®ГЄГ  Г­ГҐ ГЎГіГ¤ГҐГІ
+    w.hbrBackground = LTGRAY_BRUSH; //WHITE_BRUSH;// Г¶ГўГҐГІ ГґГ®Г­Г  Г®ГЄГ­Г 
+    w.style=CS_HREDRAW|CS_VREDRAW; //Г±ГІГЁГ«Гј - ГЇГҐГ°ГҐГ°ГЁГ±Г®ГўГ»ГўГ ГҐГ¬Г®ГҐ ГЇГ® Гµ ГЁ ГЇГ® Гі
     w.cbClsExtra=0;
     w.cbWndExtra=0;
 
@@ -458,45 +457,45 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
    // HWND hWnd;
     //MSG lpMsg;
 
-//Создадим окно в памяти, заполнив аргументы CreateWindow
-    hWnd=CreateWindow(ProgName, //Имя программы
-        "Lab 3", //Заголовок окна
-        WS_OVERLAPPEDWINDOW, //Стиль окна - перекрывающееся
-        0, //положение окна на экране по х
-        0, //положение по у
-        1920, //ширина
-        1080, //висота
-        (HWND)NULL, //идентификатор родительского окна
-        (HMENU)NULL, //идентификатор меню
-        (HINSTANCE)hInstance, //идентификатор экземпляра программы
-        (HINSTANCE)NULL); //отсутствие дополнительных параметров
+//Г‘Г®Г§Г¤Г Г¤ГЁГ¬ Г®ГЄГ­Г® Гў ГЇГ Г¬ГїГІГЁ, Г§Г ГЇГ®Г«Г­ГЁГў Г Г°ГЈГіГ¬ГҐГ­ГІГ» CreateWindow
+    hWnd=CreateWindow(ProgName, //Г€Г¬Гї ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
+        "Lab 3", //Г‡Г ГЈГ®Г«Г®ГўГ®ГЄ Г®ГЄГ­Г 
+        WS_OVERLAPPEDWINDOW, //Г‘ГІГЁГ«Гј Г®ГЄГ­Г  - ГЇГҐГ°ГҐГЄГ°Г»ГўГ ГѕГ№ГҐГҐГ±Гї
+        0, //ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ Г®ГЄГ­Г  Г­Г  ГЅГЄГ°Г Г­ГҐ ГЇГ® Гµ
+        0, //ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЇГ® Гі
+        1920, //ГёГЁГ°ГЁГ­Г 
+        1080, //ГўГЁГ±Г®ГІГ 
+        (HWND)NULL, //ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° Г°Г®Г¤ГЁГІГҐГ«ГјГ±ГЄГ®ГЈГ® Г®ГЄГ­Г 
+        (HMENU)NULL, //ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° Г¬ГҐГ­Гѕ
+        (HINSTANCE)hInstance, //ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° ГЅГЄГ§ГҐГ¬ГЇГ«ГїГ°Г  ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
+        (HINSTANCE)NULL); //Г®ГІГ±ГіГІГ±ГІГўГЁГҐ Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»Гµ ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў
 
-//Выводим окно из памяти на экран
+//Г‚Г»ГўГ®Г¤ГЁГ¬ Г®ГЄГ­Г® ГЁГ§ ГЇГ Г¬ГїГІГЁ Г­Г  ГЅГЄГ°Г Г­
     ShowWindow(hWnd, nCmdShow);
-//Обновим содержимое окна
+//ГЋГЎГ­Г®ГўГЁГ¬ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г®ГЄГ­Г 
  //   UpdateWindow(hWnd);
 
-//Цикл одержання повідомлень
+//Г–ГЁГЄГ« Г®Г¤ГҐГ°Г¦Г Г­Г­Гї ГЇГ®ГўВіГ¤Г®Г¬Г«ГҐГ­Гј
 
-    while(GetMessage(&lpMsg, hWnd, 0, 0)) { //Получаем сообщение из очереди
-            TranslateMessage(&lpMsg); //Преобразует сообщения клавиш в символы
-            DispatchMessage(&lpMsg); //Передаёт сообщение соответствующей функции окна
+    while(GetMessage(&lpMsg, hWnd, 0, 0)) { //ГЏГ®Г«ГіГ·Г ГҐГ¬ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ ГЁГ§ Г®Г·ГҐГ°ГҐГ¤ГЁ
+            TranslateMessage(&lpMsg); //ГЏГ°ГҐГ®ГЎГ°Г Г§ГіГҐГІ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї ГЄГ«Г ГўГЁГё Гў Г±ГЁГ¬ГўГ®Г«Г»
+            DispatchMessage(&lpMsg); //ГЏГҐГ°ГҐГ¤Г ВёГІ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГѕГ№ГҐГ© ГґГіГ­ГЄГ¶ГЁГЁ Г®ГЄГ­Г 
         }
     return(lpMsg.wParam);
     }
 
-//Функция окна
+//Г”ГіГ­ГЄГ¶ГЁГї Г®ГЄГ­Г 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT messg,
                         WPARAM wParam, LPARAM lParam)
     {
-    HDC hdc; //создаём контекст устройства
-    PAINTSTRUCT ps; //создаём экземпляр структуры графического вывода
+    HDC hdc; //Г±Г®Г§Г¤Г ВёГ¬ ГЄГ®Г­ГІГҐГЄГ±ГІ ГіГ±ГІГ°Г®Г©Г±ГІГўГ 
+    PAINTSTRUCT ps; //Г±Г®Г§Г¤Г ВёГ¬ ГЅГЄГ§ГҐГ¬ГЇГ«ГїГ° Г±ГІГ°ГіГЄГІГіГ°Г» ГЈГ°Г ГґГЁГ·ГҐГ±ГЄГ®ГЈГ® ГўГ»ГўГ®Г¤Г 
 
 
 
-//Цикл обработки сообщений
+//Г–ГЁГЄГ« Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ©
     switch(messg){
-    //сообщение рисования
+    //Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г°ГЁГ±Г®ГўГ Г­ГЁГї
         case WM_PAINT :
 
             hdc=BeginPaint(hWnd, &ps);
